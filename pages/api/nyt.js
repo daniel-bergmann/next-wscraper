@@ -1,11 +1,14 @@
 const puppeteer = require('puppeteer');
+const chromium = require('chrome-aws-lambda');
 // // const cors = require('cors');
 // // const app = express();
 // // app.use(cors());
 
 export default async function handler(req, res) {
   async function scrape() {
-    const browser = await puppeteer.launch();
+    const browser = await chromium.puppeteer.launch({
+      executablePath: await chromium.executablePath,
+    });
     const page = await browser.newPage();
     const url = 'https://www.nytimes.com/section/world';
 
