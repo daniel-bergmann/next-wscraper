@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     );
 
     await browser.close();
-    res.send({ nytOutput });
+    res.status(200).json({ nytOutput });
   }
   // calling function
   scrape();
